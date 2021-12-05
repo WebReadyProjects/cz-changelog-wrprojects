@@ -1,0 +1,3 @@
+{
+  "*.{css,less,scss,html,vue,json,jsx,js}": ["eslint", "prettier --write"]
+}

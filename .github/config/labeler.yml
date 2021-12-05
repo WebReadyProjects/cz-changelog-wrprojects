@@ -1,0 +1,32 @@
+---
+💚 github_actions:
+  - .github/**/*
+💚 github:
+  - .gitpod.yml
+  - .gitconfig
+  - .gitignore
+  - .gitattributes
+💚 husky:
+  - .husky/*
+📚 documentation:
+  - README.md
+  - .github/*/**.md
+  - .github/**.md
+  - LICENSE
+  - rfcs/*.md
+  - rfcs/*/*.md
+🐳 docker:
+  - .devcontainer/*
+  - .dockerignore
+🤖 renovate_config:
+  - renovate.json
+🤖 dependabot_config:
+  - .github/dependabot.yml
+🐎 editor_config:
+  - .editorconfig
+🐎 eslint:
+  - .eslintrc.js
+🐎 prettier:
+  - .prettierrc
+🐎 vscode:
+  - .vscode/*.json

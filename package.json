@@ -1,0 +1,39 @@
+{
+  "name": "github-template",
+  "description": "🔦 GitHub template created to be as accurate as possible to today's conventions and guidelines.",
+  "version": "v0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReadyProjects/github-template.git"
+  },
+  "author": "Gregoire Favreau <gfavreau.wrprojects@gmail.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.0"
+  },
+  "scripts": {
+    "test": "echo 'Tests need to be setup!'",
+    "precommit": "lint-staged",
+    "lint": "yarn lint-eslint",
+    "lint-eslint": "eslint --cache --fix --ext .js,.jsx --format=pretty lib",
+    "lint-staged": "lint-staged",
+    "lint-fix": "eslint --fix --cache --ext .js,.jsx --format=pretty",
+    "prettier": "prettier --write lib/*.{js,jsx}",
+    "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}",
+    "postinstall": "husky install",
+    "reinstall": "yarn clean && rm -rf node_modules && yarn"
+  },
+  "lint-staged": {
+    "*{js,jsx,md,json}": [
+      "prettier --lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  }
+}

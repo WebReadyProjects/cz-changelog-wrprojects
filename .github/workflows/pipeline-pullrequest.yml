@@ -1,0 +1,145 @@
+name: Pull Requests - Pipeline
+
+on:
+  pull_request:
+    types: [ opened ]
+
+jobs:
+
+  # Run GitGuardian
+  gitguardian:
+    name: GitGuardian Scanner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: GitGuardian Scanner
+        uses: GitGuardian/gg-shield-action@master
+        env:
+          GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+          GITHUB_PUSH_BASE_SHA: ${{ github.event.before }}
+          GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+
+  # Run PR Optimizer
+  pr-automation:
+    name: Pull Request Optimizer
+    runs-on: ubuntu-latest
+    needs: [ gitguardian ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: PR Optimizer
+        uses: devjoes/pr-automation@v0.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          deleteOnMerge: true
+          branchBlackList: main, development
+
+  # Run Assign Author Automatic
+  assignAuthor:
+    name: Assign author to PR
+    needs: [ gitguardian ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign author to PR
+        uses: technote-space/assign-author@v1
+
+  # Run rebase
+  rebase:
+    runs-on: ubuntu-latest
+    needs: [ gitguardian ]
+    steps:
+    - name: Rebase Pull Requests
+      uses: linhbn123/rebase-pull-requests@v1.0.1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+  # Run triage
+  triage:
+    needs: [ gitguardian ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Request Conflict Finder
+        uses: hcancelik/pr-conflict-finder@v1.0.1
+        with:
+          secret_token: ${{ secrets.GITHUB_TOKEN }}
+          conflict_label: "Has Conflict"
+          max_tries: 5
+          wait_ms: 5000
+      - uses: Logerfo/triage-action@0.0.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }} # The `GITHUB_TOKEN` secret.
+          label: triage # The triage label of your repository.
+          project: true # Enable or disable the idea that adding an issue to a project drops its triage state.
+          milestone: true # Enable or disable the idea that setting a milestone to an issue drops its triage state.
+      - name: Labeler
+        uses: actions/labeler@v3
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          configuration-path: .github/config/labeler.yml
+
+  # Run PR Labeler Size
+  pr-labeler:
+    runs-on: ubuntu-latest
+    needs: [ gitguardian ]
+    name: Label the PR size
+    steps:
+      - uses: coverwallet/pr-labeler@v1.2.1
+        with:
+          xs_max_size: '10'
+          s_max_size: '100'
+          m_max_size: '500'
+          l_max_size: '1000'
+          exclude_files: '.txt'
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Run PR Thank You
+  pr-thankyou-action:
+    runs-on: ubuntu-latest
+    needs: [ gitguardian ]
+    name: 'Pull Request Thank You'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+          fetch-depth: 0
+    - name: 'Pull Request Thank You'
+      uses: GuySWatson/pr-thankyou-action@v1.2
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Run PR Status
+  pRStatusGiphy:
+    name: PR Status Giphy
+    needs: [ gitguardian ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR Status Giphy
+      uses: jzweifel/pr-status-giphy-action@v1.0.3
+      env:
+        GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Run Emojify PR title
+  emojify-pr-title:
+    runs-on: ubuntu-latest
+    name: Emojify PR Title
+    needs: [ gitguardian ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Emojify PR Title
+        uses: pineapplelol/emojify-pr-title@v1.5.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          emoji-map: 'https://raw.githubusercontent.com/NicolasV/nuxt-draggable/main/.github/config/emoji_mapping.json'
+          use-emoji-map: true

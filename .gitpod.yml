@@ -1,0 +1,30 @@
+# VSCode extensions
+vscode:
+  extensions:
+    - hookyqr.beautify
+    - aaron-bond.better-comments
+    - editorconfig.editorconfig
+    - dbaeumer.vscode-eslint
+    - xabikos.javascriptsnippets
+    - esbenp.prettier-vscode
+    - rvest.vs-code-prettier-eslint
+    - stylelint.vscode-stylelint
+    - sysoev.language-stylus
+    - wayou.vscode-todo-highlight
+    - redhat.vscode-yaml
+
+# Commands to start on workspace startup
+tasks:
+  - init: yarn install
+
+# GitHub prebuild
+github:
+  prebuilds:
+    main: true
+    branches: true
+    pullRequests: true
+    pullRequestFromForks: true
+    addCheck: true
+    addComment: false
+    addBadge: true
+    addLabel: true

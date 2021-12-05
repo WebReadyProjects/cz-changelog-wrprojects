@@ -1,0 +1,50 @@
+{
+  "types": [
+    "init",
+    "patch",
+    "feat",
+    "fix",
+    "docs",
+    "perf",
+    "style",
+    "test",
+    "refactor",
+    "delete",
+    "ci",
+    "security",
+    "up_deph",
+    "down_deph",
+    "translate",
+    "hotfix",
+    "chore",
+    "revert",
+    "access",
+    "add_deph",
+    "android",
+    "bot",
+    "mac",
+    "linux",
+    "windows",
+    "remove_deph",
+    "docker",
+    "move",
+    "rename",
+    "housekeeping",
+    "database",
+    "ios"
+  ],
+  "scope": {
+    "required": false,
+    "allowed": [
+      "*"
+    ],
+    "validate": false,
+    "multiple": false
+  },
+  "warnOnFail": false,
+  "maxSubjectLength": 100,
+  "subjectPattern": ".+",
+  "subjectPatternErrorMsg": "subject does not match subject pattern!",
+  "helpMessage": "Caution! Your commit does not respect the rules within this project. Feel free to consult the documentation on GitHub.",
+  "autoFix": false
+}

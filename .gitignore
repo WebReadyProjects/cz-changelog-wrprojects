@@ -1,0 +1,19 @@
+# IDE user config
+.idea/
+.vs/
+
+# Logs
+yarn-error.log
+npm-debug.log
+npm-error.log
+
+# NodeJS
+node_modules/
+
+# Deployment Vercel
+.vercel
+
+# Docs
+docs/dist/
+docs/.vuepress/.cache/
+docs/.vuepress/.temp/

@@ -1,0 +1,9 @@
+cacheFolder: "./.yarn/cache"
+enableGlobalCache: true
+enableImmutableCache: false
+enableInlineBuilds: true
+enableMirror: true
+enableProgressBars: true
+deferredVersionFolder: "./.yarn/versions"
+compressionLevel: "mixed"
+defaultSemverRangePrefix: "^"

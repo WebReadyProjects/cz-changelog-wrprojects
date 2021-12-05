@@ -1,0 +1,128 @@
+name: Issues - Pipeline
+
+on:
+  issue_comment:
+    types: [ created ]
+  issues:
+    types: [ opened, labeled, unlabeled, reopened, edited ]
+
+jobs:
+
+  # Run GitGuardian
+  gitguardian:
+    name: GitGuardian Scanner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: GitGuardian Scanner
+        uses: GitGuardian/gg-shield-action@master
+        env:
+          GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+          GITHUB_PUSH_BASE_SHA: ${{ github.event.before }}
+          GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+
+  # Run rebase
+  rebase:
+    name: rebase
+    runs-on: ubuntu-latest
+    needs: [ gitguardian ]
+    steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: '/rebase'
+          reaction: rocket
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        if: steps.check.outputs.triggered == 'true'
+        with:
+          fetch-depth: 0
+      - name: Automatic Rebases
+        uses: cirrus-actions/rebase@1.5
+        if: steps.check.outputs.triggered == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Run Giphy Generator
+  giphy-generator:
+    name: GIPHY Generator
+    runs-on: ubuntu-latest
+    steps:
+      - name: GIPHY Generator
+        id: giphy_generator
+        uses: iamhughes/giphy-generator@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GIPHY_TOKEN: ${{ secrets.GIPHY_API_KEY }} # This token should be created on giphy.com: https://developers.giphy.com/dashboard/?create=true
+        with:
+          rating: 'g'
+          lang: 'en'
+
+  # Run check broken link
+  check:
+    name: Broken Link Check
+    needs: [ gitguardian ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Broken Link Check
+        uses: technote-space/broken-link-checker-action@v2
+
+  # Run Support
+  support:
+    name: Support
+    needs: [ gitguardian ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dessant/support-requests@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          support-label: 'support'
+          issue-comment: >
+            :wave: @{issue-author}, we use the issue tracker exclusively
+            for bug reports and feature requests. However, this issue appears
+            to be a support request. Please use our support channels
+            to get help with the project.
+          close-issue: true
+          lock-issue: false
+          issue-lock-reason: 'off-topic'
+
+  # Run Triage
+  triage:
+    name: Triage
+    runs-on: ubuntu-latest
+    needs: [ gitguardian ]
+    steps:
+    - uses: raulriera/triage-action@1.0.0
+      with:
+        globs: |
+          Priority [0-2]
+          Team:*
+        message: |
+          **⚠️ Missing information**
+          Please see our CONTRIBUTING.md for more information.
+          When you are ready, please comment to this issue with `/triaged`
+
+  # Run Auto Labeler
+  auto_label:
+    runs-on: ubuntu-latest
+    name: Automatic Github Issue Labeller
+    needs: [ gitguardian, support ]
+    steps:
+    - name: Label Step
+      uses: larrylawl/Auto-Github-Issue-Labeller@main
+      with:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        REPOSITORY: ${{github.repository}}
+        DELTA: "1"
+        CONFIDENCE: "2"
+        FEATURE: "enhancement"
+        BUG: "bug"
+        DOCS: "documentation"
+        VERSION: "v1.0"
