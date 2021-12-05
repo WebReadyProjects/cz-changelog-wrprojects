@@ -13,14 +13,14 @@
   <a href="https://github.com/WebReadyProjects/cz-changelog-wrprojects/">
     <img src="https://img.shields.io/maintenance/yes/2021?style=flat-square" alt="Maintenance badge">
   </a>
-  <a href="">
+  <a href="https://github.com/WebReadyProjects/cz-changelog-wrprojects/actions/workflows/pipeline-deployment.yml">
     <img src="https://img.shields.io/github/workflow/status/WebReadyProjects/cz-changelog-wrprojects/Deployment%20-%20Pipeline?style=flat-square" alt="Deployment - Pipeline">
   </a>
-  <a href="">
+  <a href="https://www.npmjs.com/package/@webreadyprojects/cz-changelog-wrprojects">
     <img src="https://img.shields.io/github/downloads/WebReadyProjects/cz-changelog-wrprojects/total?style=flat-square" alt="Downloads GitHub">
   </a>
-  <a href="">
-    <img src="https://img.shields.io/npm/dw/cz-changelog-wrprojects?style=flat-square" alt="Downloads NPM">
+  <a href="https://www.npmjs.com/package/@webreadyprojects/cz-changelog-wrprojects">
+    <img src="https://img.shields.io/npm/dw/@webreadyprojects/cz-changelog-wrprojects?style=flat-square" alt="Downloads NPM">
   </a>
   <a href="https://github.com/WebReadyProjects/cz-changelog-wrprojects/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/WebReadyProjects/cz-changelog-wrprojects?style=flat-square" alt="License badge">
