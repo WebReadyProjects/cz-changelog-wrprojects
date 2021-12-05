@@ -71,7 +71,7 @@
     "@semantic-release/git": "^10.0.1",
     "@umijs/fabric": "^2.8.1",
     "@umijs/test": "^3.5.20",
-    "chalk": "^2.4.1",
+    "chalk": "^5.0.0",
     "commitizen": "^4.2.4",
     "eslint": "^8.3.0",
     "jest": "^27.4.3",
