@@ -1,132 +1,132 @@
 ---
-- name: approved-review
+- name: ✔️ approved-review
   color: '71FFA4'
   description: Review approved and PR ready to merge
 
-- name: awaiting-review
+- name: ⌛ awaiting-review
   color: 'E3A466'
   description: PR awaiting for review
 
-- name: blocked-review
+- name: ⛔ blocked-review
   color: 'E64320'
   description: Review blocked (specify why in comments)
 
-- name: bug
+- name: 🐛 bug
   color: 'E64320'
   description: Suspected/confirmed bug
 
-- name: chore
+- name: 🚧 chore
   color: 'E3A466'
   description: Tedious but necessary task
 
-- name: conflicts
+- name: ⛔ conflicts
   color: 'E67F03'
   description: Merge conflicts to be resolved by the author of the PR
 
-- name: discussion
+- name: 📝 discussion
   color: '78A5FF'
   description: Invite to discussion of collaborators
 
-- name: duplicate
+- name: ❌ duplicate
   color: 'FFFFFF'
   description: Duplicated issue link to the issue in comments
 
-- name: enhancement
+- name: 💡 enhancement
   color: '71FFA4'
   description: Improvement of existing code
 
-- name: big-enhancement
+- name: 💣 big-enhancement
   color: '00FF62'
   description: Epic improvement deserving a full release
 
-- name: ext-dependency
+- name: 🎉 ext-dependency
   color: 'E64320'
   description: Third-party dependency problem can't fix by our own
 
-- name: help-needed
+- name: 🆘 help-needed
   color: '78A5FF'
   description: Issue author is asking for help
 
-- name: in-progress
+- name: ⌛ in-progress
   color: '71FFA4'
   description: Issue is currently worked on
 
-- name: in-review
+- name: ⌛ in-review
   color: '71FFA4'
   description: Issue is currently reviewed
 
-- name: low-priority
+- name: ⚠️ low-priority
   color: '71FFA4'
   description: Non-urgent changes and future ideas
 
-- name: medium-priority
+- name: ⚠️ medium-priority
   color: 'E3A466'
   description: Can be worked on later
 
-- name: high-priority
+- name: ⚠️ high-priority
   color: 'E64320'
   description: Need to be worked on ASAP
 
-- name: critical-priority
+- name: ⚠️ critical-priority
   color: '000000'
   description: Stop all work in progress and work on this (to be used when REALLY necessary!)
 
-- name: question
+- name: ❓ question
   color: 'E3A466'
   description: Question awaiting answer before continuing to advance on the issue
 
-- name: research-needed
+- name: ⌛ research-needed
   color: '78A5FF'
   description: Research required be clear and concise
 
-- name: beginner
+- name: 🔰 beginner
   color: '71FFA4'
   description: Issue that can be resolved by beginners
 
-- name: intermediate
+- name: 🔰 intermediate
   color: 'E3A466'
   description: Issue requiring at least intermediate developers
 
-- name: advanced
+- name: 🔰 advanced
   color: 'E67F03'
   description: Issue requiring at least advanced developers
 
-- name: expert
+- name: 🔰 expert
   color: 'E64320'
   description: Issue requiring expert developers
 
-- name: feature
+- name: ⭐ feature
   color: '78A5FF'
   description: Functionnality request changes, improvements, additions, etc
 
-- name: blocked
+- name: ⛔ blocked
   color: 'EEEEEE'
   description: Is blocked by another issue (specify which in comments)
 
-- name: blocker
+- name: ⛔ blocker
   color: '000000'
   description: Blocks the progress of an issue requires special attention(specify which in comments)
 
-- name: windows
+- name: 🖥️ windows
   color: '2E95D1'
   description: Under Windows OS
 
-- name: macos
+- name: 🍎 macos
   color: '2E95D1'
   description: Under MacOS
 
-- name: linux
+- name: 🐧 linux
   color: '2E95D1'
   description: Under Linux OS
 
-- name: admin-task
+- name: 🚀 admin-task
   color: 'E64320'
   description: Task requiring an administrator
 
-- name: technical-task
+- name: 🚀 technical-task
   color: 'E67F03'
   description: Task requiring technical work
 
-- name: design-task
+- name: 🚀 design-task
   color: 'E67F03'
   description: Task requiring design work
