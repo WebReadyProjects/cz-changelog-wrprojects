@@ -1147,17 +1147,23 @@
     "@commitlint/rules" "^15.0.0"
     "@commitlint/types" "^15.0.0"
 
-"@commitlint/lint@latest":
+"@commitlint/load@>6.1.1", "@commitlint/load@latest":
   version "16.0.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/lint/-/lint-16.0.0.tgz#87151a935941073027907fd4752a2e3c83cebbfe"
-  integrity sha512-HNl15bRC0h+pLzbMzQC3tM0j1aESXsLYhElqKnXcf5mnCBkBkHzu6WwJW8rZbfxX+YwJmNljN62cPhmdBo8x0A==
+  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-16.0.0.tgz#4ab9f8502d0521209ce54d7cce58d419b8c35b48"
+  integrity sha512-7WhrGCkP6K/XfjBBguLkkI2XUdiiIyMGlNsSoSqgRNiD352EiffhFEApMy1/XOU+viwBBm/On0n5p0NC7e9/4A==
   dependencies:
-    "@commitlint/is-ignored" "^16.0.0"
-    "@commitlint/parse" "^16.0.0"
-    "@commitlint/rules" "^16.0.0"
+    "@commitlint/config-validator" "^16.0.0"
+    "@commitlint/execute-rule" "^16.0.0"
+    "@commitlint/resolve-extends" "^16.0.0"
     "@commitlint/types" "^16.0.0"
+    chalk "^4.0.0"
+    cosmiconfig "^7.0.0"
+    cosmiconfig-typescript-loader "^1.0.0"
+    lodash "^4.17.19"
+    resolve-from "^5.0.0"
+    typescript "^4.4.3"
 
-"@commitlint/load@>6.1.1", "@commitlint/load@^15.0.0", "@commitlint/load@latest":
+"@commitlint/load@^15.0.0":
   version "15.0.0"
   resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-15.0.0.tgz#5bd391c1387aafe92b54cf2a86b76a5228fcf4ef"
   integrity sha512-Ak1YPeOhvxmY3ioe0o6m1yLGvUAYb4BdfGgShU8jiTCmU3Mnmms0Xh/kfQz8AybhezCC3AmVTyBLaBZxOHR8kg==
