@@ -1,5 +1,6 @@
 {
   "name": "@webreadyprojects/cz-changelog-wrprojects",
+  "version": "v0.0.2-abhean",
   "description": "🔦 Commitizen adapter for WebReady Projects following the conventional-changelog format.",
   "main": "packages/cz-changelog-wrprojects/lib/index.js",
   "scripts": {
