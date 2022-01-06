@@ -1,0 +1,9 @@
+# NodeJS
+node_modules/
+yarn-error.log
+yarn-debug.log
+npm-error.log
+npm-debug.log
+
+# Father build
+src/

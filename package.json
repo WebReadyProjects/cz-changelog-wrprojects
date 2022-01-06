@@ -1,18 +1,17 @@
 {
   "name": "@webreadyprojects/cz-changelog-wrprojects",
-  "version": "v0.0.1-abhean",
   "description": "🔦 Commitizen adapter for WebReady Projects following the conventional-changelog format.",
-  "main": "lib/index.js",
+  "main": "packages/cz-changelog-wrprojects/lib/index.js",
   "scripts": {
+    "build": "father-build",
     "commit": "git-cz",
-    "test": "echo 'Tests need to be setup!'",
+    "test": "lerna run test",
     "test:coverage": "jest --coverage",
     "lint": "yarn lint:eslint",
     "lint:eslint": "eslint --cache --fix --ext .js,.jsx --format=pretty lib",
     "lint:staged": "lint:staged",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx --format=pretty",
-    "prettier": "prettier --write lib/*.{js,jsx}",
-    "reinstall": "yarn clean && rm -rf node_modules && yarn"
+    "prettier": "prettier --write lib/*.{js,jsx}"
   },
   "lint-staged": {
     "*{js,jsx,md,json}": [
@@ -21,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WebReadyProjects/cz-changelog-wrprojects.git"
+    "url": "https://github.com/WebReadyProjects/cz-changelog-wrprojects.git"
   },
   "author": "Gregoire Favreau <gfavreau.wrprojects@gmail.com>",
   "license": "Apache-2.0",
@@ -29,65 +28,32 @@
     "url": "https://github.com/WebReadyProjects/cz-changelog-wrprojects/issues"
   },
   "homepage": "https://github.com/WebReadyProjects/cz-changelog-wrprojects#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "tag": "latest"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
-      "@semantic-release/git"
-    ],
-    "preset": "angular"
-  },
-  "dependencies": {
-    "@semantic-release/commit-analyzer": "^9.0.2",
-    "@semantic-release/github": "^8.0.2",
-    "@semantic-release/release-notes-generator": "^10.0.3",
-    "conventional-changelog-conventionalcommits": "latest",
-    "conventional-commit-types": "latest",
-    "cz-conventional-changelog": "latest",
-    "husky": "^7.0.4",
-    "lodash.map": "^4.6.0",
-    "longest": "^2.0.1",
-    "right-pad": "^1.0.1",
-    "semantic-release": "^18.0.1",
-    "word-wrap": "^1.2.3"
-  },
   "devDependencies": {
-    "@commitlint/cli": "latest",
-    "@commitlint/config-angular": "latest",
-    "@commitlint/config-conventional": "latest",
-    "@commitlint/lint": "latest",
-    "@commitlint/load": "latest",
-    "@commitlint/prompt-cli": "latest",
-    "@commitlint/utils": "latest",
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/git": "^10.0.1",
-    "@umijs/fabric": "^2.8.1",
-    "@umijs/test": "^3.5.20",
-    "chalk": "^2.4.1",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "commitizen": "^4.2.4",
     "eslint": "^8.3.0",
-    "jest": "^27.4.3",
+    "father-build": "^1.20.4",
+    "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "prettier": "^2.5.0",
-    "validate-commit-msg": "^2.14.0"
+    "validate-commit-msg": "^2.14.0",
+    "webpack": "*"
+  },
+  "peerDependencies": {
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "commitizen": "^4.2.4",
+    "eslint": "^8.3.0",
+    "father-build": "^1.20.4",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.0",
+    "validate-commit-msg": "^2.14.0",
+    "webpack": "*"
   },
   "config": {
     "commitizen": {
-      "path": "lib/index.js"
+      "path": "packages/cz-changelog-wrprojects/src/index.js"
     }
-  },
-  "engines": {
-    "node": "14",
-    "yarn": "1",
-    "npm": "6"
   },
   "husky": {
     "hooks": {

@@ -10,6 +10,9 @@
   <a href="https://github.com/WebReadyProjects/cz-changelog-wrprojects/releases">
     <img src="https://img.shields.io/github/package-json/v/WebReadyProjects/cz-changelog-wrprojects?style=flat-square" alt="Version badge">
   </a>
+  <a href="https://github.com/lerna/lerna">
+    <img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg" alt="Maintained with Lerna">
+  </a>
   <a href="https://github.com/WebReadyProjects/cz-changelog-wrprojects/">
     <img src="https://img.shields.io/maintenance/yes/2021?style=flat-square" alt="Maintenance badge">
   </a>
