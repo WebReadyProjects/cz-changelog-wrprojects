@@ -61,5 +61,8 @@
       "commit-msg": "'commitlint -E HUSKY_GIT_PARAMS', 'validate-commit-msg'",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
+  },
+  "dependencies": {
+    "lodash.map": "^4.6.0"
   }
 }
