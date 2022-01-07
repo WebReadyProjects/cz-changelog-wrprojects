@@ -29,28 +29,6 @@
     "url": "https://github.com/WebReadyProjects/cz-changelog-wrprojects/issues"
   },
   "homepage": "https://github.com/WebReadyProjects/cz-changelog-wrprojects#readme",
-  "devDependencies": {
-    "babel-plugin-add-module-exports": "^1.0.4",
-    "commitizen": "^4.2.4",
-    "eslint": "^8.3.0",
-    "father-build": "^1.20.4",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
-    "prettier": "^2.5.0",
-    "validate-commit-msg": "^2.14.0",
-    "webpack": "*"
-  },
-  "peerDependencies": {
-    "babel-plugin-add-module-exports": "^1.0.4",
-    "commitizen": "^4.2.4",
-    "eslint": "^8.3.0",
-    "father-build": "^1.20.4",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
-    "prettier": "^2.5.0",
-    "validate-commit-msg": "^2.14.0",
-    "webpack": "*"
-  },
   "config": {
     "commitizen": {
       "path": "packages/cz-changelog-wrprojects/src/index.js"
@@ -63,6 +41,16 @@
     }
   },
   "dependencies": {
-    "lodash.map": "^4.6.0"
+    "lodash.map": "^4.6.0",
+    "longest": "^2.0.1",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "commitizen": "^4.2.4",
+    "eslint": "^8.3.0",
+    "father-build": "^1.20.4",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.0",
+    "validate-commit-msg": "^2.14.0",
+    "webpack": "*"
   }
 }
