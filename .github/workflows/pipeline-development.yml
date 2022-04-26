@@ -124,12 +124,12 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v2
         with:
           languages: javascript
           config-file: ./.github/config/codeql.yml
       - name: Analyze Code Base
-        uses: github/codeql-action/analyze@v1
+        uses: github/codeql-action/analyze@v2
 
   # Run format dprint for JS
   format:
