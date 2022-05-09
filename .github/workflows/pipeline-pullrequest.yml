@@ -138,7 +138,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Emojify PR Title
-        uses: pineapplelol/emojify-pr-title@v1.5.3
+        uses: pineapplelol/emojify-pr-title@v1.5.4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           emoji-map: 'https://raw.githubusercontent.com/NicolasV/nuxt-draggable/main/.github/config/emoji_mapping.json'
